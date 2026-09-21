@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TCL Global Product Quick Reference</title>
+<style>:root{--red:#e60012;--ink:#15171a;--sub:#65707b;--line:#e5e9ed;--bg:#f5f7f9}
+*{box-sizing:border-box}
+body{font:16px/1.5 Arial,"Microsoft YaHei",sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+header{height:64px;padding:0 34px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px}
+.logo{background:var(--red);color:#fff;padding:4px 8px;font-size:20px;font-weight:900}
+.layout{max-width:1440px;margin:auto;padding:28px 24px 60px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px}
+.side{position:sticky;top:22px;height:max-content;background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px}
+.side-title{font-size:12px;color:var(--sub);padding:8px 10px}
+.nav{width:100%;padding:12px 10px;margin:2px 0;border:0;border-radius:8px;background:#fff;text-align:left;font:600 15px inherit;cursor:pointer;color:#50575e}
+.nav.active{background:#fbe9eb;color:var(--red)}
+.badge{float:right;background:var(--red);color:#fff;border-radius:10px;min-width:20px;text-align:center;font-size:11px}
+.content{min-width:0}
+h1{font-size:31px;margin:0 0 6px}
+.accent{color:var(--red)}
+.muted{color:var(--sub);font-size:13px}
+.search{padding:15px 18px;width:100%;font-size:18px;border:1px solid var(--line);border-radius:12px;background:#fff;outline:0;margin:18px 0 8px}
+.filter{padding:7px 13px;margin:4px 4px 4px 0;border:1px solid var(--line);border-radius:20px;background:#fff;cursor:pointer}
+.filter.on{background:#20252a;color:#fff;border-color:#20252a}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card,.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px;font-size:21px}
+.card small{color:var(--sub)}
+button{font:inherit}
+.actions{margin-top:12px}
+.actions button{padding:7px 10px;margin-right:5px;border:1px solid #cbd2d9;border-radius:7px;background:#fff;cursor:pointer}
+.actions button.added{border-color:var(--red);color:var(--red)}
+.detail{margin-top:20px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr)}
+.spec{padding:12px;border-top:1px solid #eee}
+.spec span{display:block;color:var(--sub);font-size:13px}
+.compare-panel{padding:0;overflow:hidden}
+.compare-tools{min-height:58px;padding:13px 17px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.compare-chip{border:1px solid var(--line);background:#fff;border-radius:18px;padding:6px 10px;font-size:13px}
+.compare-chip button{border:0;background:transparent;color:var(--sub);cursor:pointer;margin-left:5px;font-size:16px;line-height:1}
+.table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain}
+.compare-grid{min-width:850px;display:grid;grid-template-columns:170px repeat(3,minmax(220px,1fr))}
+.compare-cell{min-width:0;min-height:58px;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;overflow-wrap:anywhere}
+.compare-label{background:#fafbfc;font-weight:700;color:#535b63;font-size:14px}
+.compare-head{min-height:102px;display:block;padding-top:18px;font-size:17px;font-weight:800}
+.compare-head small{display:block;margin-top:6px;color:var(--sub);font-size:13px;font-weight:400}
+@media(max-width:840px){.layout{display:block;padding:20px 13px 90px}
+.side{position:fixed;z-index:5;left:13px;right:13px;bottom:12px;top:auto;display:flex;gap:3px;box-shadow:0 8px 28px #0002}
+.side-title{display:none}
+.nav{text-align:center;font-size:13px}
+.badge{float:none;display:inline-block}
+.grid,.specs{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){header span{display:none}
+.grid,.specs{grid-template-columns:1fr}
+.layout{padding-top:20px}
+header{height:58px;padding:0 14px}
+h1{font-size:26px}
+.side{left:8px;right:8px;bottom:8px;padding:5px}
+.nav{min-width:0;padding:10px 3px;font-size:12px}
+.badge{font-size:10px;min-width:18px}
+.compare-panel{border-radius:10px}
+.compare-tools{padding:11px 12px}
+.compare-grid{grid-template-columns:130px repeat(3,220px)}
+.compare-cell{padding:11px 10px;font-size:14px}
+.compare-head{min-height:92px;padding-top:14px;font-size:16px}
+}
+</style>
+</head>
+<body>
+<header><b class="logo">TCL</b><strong>Global Product Quick Reference</strong><span class="muted">2026 TV · Monitor · Soundbar</span></header>
+<main class="layout">
+<aside class="side">
+<div class="side-title">PRODUCT CATEGORY</div>
+<button class="nav active" data-cat="TV">Television</button>
+<button class="nav" data-cat="Monitor">Monitor</button>
+<button class="nav" data-cat="Soundbar">Soundbar</button>
+<button class="nav" id="compareTab">Compare <span id="count" class="badge">0</span></button>
+</aside>
+<div class="content">
+<section id="searchView">
+<h1 id="pageTitle">Television <span class="accent">quick reference</span></h1>
+<p id="pageIntro" class="muted">Search by model, size or specification.</p>
+<input id="q" class="search" placeholder="e.g. X11L, C7L, 98, Mini LED">
+<div id="filters">
+</div>
+<p id="summary" class="muted">
+</p>
+<div id="list" class="grid">
+</div>
+<div class="panel detail">
+<h2>Product parameters</h2>
+<div id="detail">
+</div>
+</div>
+</section>
+<section id="compareView" hidden>
+<h1>Product <span class="accent">comparison</span></h1>
+<div class="panel compare-panel">
+<div id="compareTools" class="compare-tools"></div>
+<div class="table-wrap"><div id="compare" class="compare-grid"></div></div>
+</div>
+</section>
+</div>
+</main>
+<script>
+const P=(model,cat,size,v)=>({model,cat,size,v});
+const valueAt=(value,index)=>Array.isArray(value)?value[index]:value;
+const TV=(series,sizes,spec)=>sizes.map((size,index)=>P(size+series,'TV',size,{
+  Size:size+' inch',Series:series,Technology:spec.technology,
+  'Peak brightness':valueAt(spec.brightness,index),'Dimming zone':valueAt(spec.zone,index),
+  'Color gamut':spec.gamut,Panel:valueAt(spec.panel,index),'Refresh rate':valueAt(spec.refresh,index),
+  Audio:valueAt(spec.audio,index),AI:spec.ai,'Body thickness':valueAt(spec.thickness,index),
+  'Picture certification':valueAt(spec.picture,index),'Audio certification':valueAt(spec.audioCert,index)
+}));
+const products=[
+...TV('X11L',['98','85','75'],{technology:'SQD-Mini LED',brightness:['10000 nits','10000 nits','9000 nits'],zone:'Up to 20000',gamut:'100% BT.2020',panel:'WHVA 2.0 Ultra Panel',refresh:'4K 144Hz + 288Hz DLG',audio:'Audio by BANG & OLUFSEN · 5.2ch',ai:'TCL AI + TSR AiPQ Processor',thickness:['21mm','21mm','24mm'],picture:'HDR · HDR10+ · HLG · Dolby Vision IQ · AMD FreeSync Premium Pro · IMAX Enhanced',audioCert:'Dolby Atmos · DTS:X'}),
+...TV('C8L',['98','85','75','65'],{technology:'SQD-Mini LED',brightness:['6000 nits','6000 nits','5500 nits','5000 nits'],zone:'Up to 4032 Zones',gamut:'100% BT.2020',panel:'WHVA 2.0 Ultra Panel',refresh:'4K 144Hz + 288Hz DLG',audio:'Audio by BANG & OLUFSEN · 2.2.2ch',ai:'TCL AI + TSR AiPQ Processor',thickness:['54mm','53mm','51mm','50mm'],picture:'HDR · Dolby Vision IQ',audioCert:'Dolby Atmos · DTS:X'}),
+...TV('C7L',['98','85','75','65','55'],{technology:'SQD-Mini LED',brightness:['3000 nits','3000 nits','3000 nits','2700 nits','2700 nits'],zone:['2176','1624','1332','1152','800'],gamut:'100% BT.2020',panel:'HVA 2.0 Pro Panel',refresh:'4K 144Hz + 288Hz DLG',audio:'Audio by BANG & OLUFSEN · 2.2ch',ai:'TCL AI + TSR AiPQ Processor',thickness:['61mm','57.9mm','56.7mm','56mm','55.9mm'],picture:'HDR10+ · AMD FreeSync Premium Pro',audioCert:'Dolby Atmos · DTS:X'}),
+...TV('C6K Pro',['98','85','75','65','55'],{technology:'QD-Mini LED',brightness:'1000 nits',zone:['512','420','312','242','180'],gamut:'93% DCI-P3',panel:['Matte HVA Panel','Matte HVA Panel','HVA Panel','HVA Panel','HVA Panel'],refresh:'4K 144Hz + 288Hz DLG',audio:'Onkyo · 2.1ch',ai:'TCL AI + TSR AiPQ Processor',thickness:['64mm','57mm','56mm','56mm','55mm'],picture:'HLG · IMAX',audioCert:'Dolby Atmos · DTS:X'}),
+...TV('P8L',['98','85','75','65','55'],{technology:'QD-Mini LED',brightness:['1000 nits','450 nits','450 nits','450 nits','450 nits'],zone:'-',gamut:'93% DCI-P3',panel:'HVA Panel',refresh:'4K 144Hz + 288Hz DLG',audio:['Onkyo · 2.1ch','Onkyo · 2.1ch','Onkyo · 2.1ch','Onkyo · 2.1ch','Onkyo · 2.0ch'],ai:'TCL AI + TSR AiPQ Processor',thickness:['64mm','63mm','70mm','69mm','69mm'],picture:['HDR · HDR10+ · HLG · Dolby Vision IQ · AMD FreeSync Premium Pro','HDR · HDR10+ · HLG · Dolby Vision · AMD FreeSync','HDR · HDR10+ · HLG · Dolby Vision · AMD FreeSync','HDR · HDR10+ · HLG · Dolby Vision · AMD FreeSync','HDR · HDR10+ · HLG · Dolby Vision · AMD FreeSync'],audioCert:'DTS Virtual:X · Dolby Atmos'}),
+...TV('P7L',['85','75','65','55','50','43'],{technology:'QLED',brightness:['450 nits','400 nits','400 nits','400 nits','400 nits','400 nits'],zone:'-',gamut:'93% DCI-P3',panel:'HVA Panel',refresh:['DLG 120Hz','DLG 120Hz','DLG 120Hz','DLG 120Hz','60Hz','60Hz'],audio:['2.1ch','2.0ch','2.0ch','2.0ch','2.0ch','2.0ch'],ai:'TCL AI + AiPQ Processor',thickness:['63mm','69mm','69mm','69mm','68mm','72mm'],picture:'HDR · HDR10+ · HLG · Dolby Vision',audioCert:'DTS Virtual:X · Dolby Atmos'}),
+...TV('P6L',['75','65','55','50','43'],{technology:'4K Smart TV',brightness:['330 nits','280 nits','270 nits','260 nits','260 nits'],zone:'-',gamut:'-',panel:'HVA Panel',refresh:['DLG 120Hz','DLG 120Hz','60Hz','60Hz','60Hz'],audio:'2.0ch',ai:'TCL AI + AiPQ Processor',thickness:['74mm','73mm','72mm','70mm','72mm'],picture:'HDR10+ · HLG',audioCert:'Dolby Audio'}),
+P('X3A','Monitor','31.5',{Resolution:'UHD',Technology:'OLED+', 'Dimming zone':'-',Panel:'OLED+', 'Refresh rate':'FHD 480Hz / UHD 240Hz','Peak brightness':'1300 nits','Color gamut':'98.5% DCI-P3',Audio:'Bang & Olufsen','Smart system':'×'}),P('C3A Pro','Monitor','31.5/27',{Resolution:'UHD',Technology:'QD-Mini LED','Dimming zone':'2304',Panel:'HVA','Refresh rate':'165Hz / UHD 165Hz','Peak brightness':'2200 nits','Color gamut':'95–98% DCI-P3',Audio:'2×5W','Smart system':'√'}),P('C2A Pro','Monitor','27',{Resolution:'UHD',Technology:'QD-Mini LED','Dimming zone':'2304',Panel:'HFS Shoot','Refresh rate':'UHD 160Hz','Peak brightness':'2000 nits','Color gamut':'98% DCI-P3',Audio:'2×5W','Smart system':'√'}),P('C2A','Monitor','27',{Resolution:'UHD',Technology:'QD-Mini LED','Dimming zone':'1196',Panel:'HFS Shoot','Refresh rate':'UHD 160Hz','Peak brightness':'1200 nits','Color gamut':'98% DCI-P3',Audio:'No','Smart system':'×'}),P('P3A Pro','Monitor','27',{Resolution:'QHD',Technology:'QD-Mini LED','Dimming zone':'1196',Panel:'HFS Shoot','Refresh rate':'320Hz','Peak brightness':'1200 nits','Color gamut':'98% DCI-P3',Audio:'No','Smart system':'×'}),P('P3A','Monitor','27',{Resolution:'QHD',Technology:'QD-Mini LED','Dimming zone':'1196',Panel:'HFS Shoot','Refresh rate':'260Hz','Peak brightness':'1200 nits','Color gamut':'99% DCI-P3',Audio:'No','Smart system':'×'}),P('P2A Ultra','Monitor','27',{Resolution:'QHD/HD',Technology:'Mini LED','Dimming zone':'180',Panel:'HFS Shoot','Refresh rate':'QHD 550Hz / HD 1040Hz','Peak brightness':'800 nits','Color gamut':'95% DCI-P3',Audio:'No','Smart system':'×'}),P('P2A Pro','Monitor','27/24.5',{Resolution:'QHD',Technology:'Mini LED','Dimming zone':'180',Panel:'IPS','Refresh rate':'320/360Hz','Peak brightness':'800 nits','Color gamut':'95% DCI-P3',Audio:'No','Smart system':'×'}),P('P2A','Monitor','27',{Resolution:'QHD',Technology:'Mini LED','Dimming zone':'84',Panel:'HFS Shoot','Refresh rate':'200Hz','Peak brightness':'600 nits','Color gamut':'95% DCI-P3',Audio:'No','Smart system':'×'}),P('P1A','Monitor','24.5',{Resolution:'FHD',Technology:'Mini LED','Dimming zone':'84',Panel:'HFS Shoot','Refresh rate':'300Hz','Peak brightness':'600 nits','Color gamut':'92.5% DCI-P3',Audio:'No','Smart system':'×'}),P('C2A Pro','Monitor','34',{Resolution:'WQHD',Technology:'QD-Mini LED','Dimming zone':'2304',Panel:'HVA','Refresh rate':'240Hz','Peak brightness':'1600 nits','Color gamut':'98% DCI-P3 TBD',Audio:'2×3W','Smart system':'×'}),P('C2A','Monitor','34',{Resolution:'WQHD',Technology:'QD-Mini LED','Dimming zone':'1188',Panel:'HVA','Refresh rate':'200Hz LD On / 180Hz LD Off','Peak brightness':'1200 nits','Color gamut':'96% DCI-P3',Audio:'2×3W','Smart system':'×'}),
+P('Q85H Pro','Soundbar','',{Channels:'7.1.4ch',Features:'RAY·DANZ; Tutti Choral; HDMI 2.1; Dolby Atmos + DTS:X'}),P('Q75H','Soundbar','',{Channels:'5.1.2ch',Features:'RAY·DANZ; Tutti Choral; Dolby Atmos + DTS:X'}),P('Q65H','Soundbar','',{Channels:'5.1ch',Features:'RAY·DANZ; Tutti Choral; Dolby Atmos + DTS:X'}),P('A65K','Soundbar','',{Channels:'3.1.2ch',Features:'Wireless Subwoofer; Audio by BANG & OLUFSEN; Dolby Atmos + DTS:X'}),P('S55H','Soundbar','',{Channels:'2.1ch',Features:'Wireless Subwoofer; Dolby Atmos + DTS:X Virtual X; 220W Max output'}),P('S45H','Soundbar','',{Channels:'2.0ch',Features:'All in one Sbar; Dolby Atmos + DTS:X Virtual X; 120W Max output'}),P('Z100','Soundbar','',{Channels:'1.1.1ch',Features:'170W Max Output; Dolby Atmos FlexConnect; TV Ensemble; Free Combination'}),P('Party Speaker TP300K','Soundbar','',{Channels:'-',Features:'340W; 18h; 8 light effects; IPX4; Group Link; True Wireless Stereo'}),P('Party Speaker TP200K','Soundbar','',{Channels:'-',Features:'220W; 12h; 5 light effects; IPX4; Group Link; True Wireless Stereo'})];
+let cat='TV',size='All',cur=products[0],sel=[];
+const $=id=>document.getElementById(id);
+const titles={TV:'Television',Monitor:'Monitor',Soundbar:'Soundbar'};
+function openCategory(next){
+  cat=next;size='All';$('q').value='';cur=products.find(x=>x.cat===cat);
+  $('searchView').hidden=false;$('compareView').hidden=true;
+  document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+  $('pageTitle').innerHTML=`${titles[cat]} <span class="accent">quick reference</span>`;
+  filters();render();window.scrollTo({top:0,behavior:'smooth'});
+}
+function filters(){
+  const order=['98','85','75','65','55','50','43','34','31.5','27','24.5'];
+  const values=[...new Set(products.filter(x=>x.cat===cat).flatMap(x=>x.size?x.size.split('/'):[]))];
+  values.sort((a,b)=>order.indexOf(a)-order.indexOf(b));
+  $('filters').innerHTML=['All',...values].map(x=>`<button class="filter ${x===size?'on':''}" data-size="${x}">${x==='All'?'All sizes':x+' inch'}</button>`).join('');
+  $('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{size=b.dataset.size;filters();render()});
+}
+function shown(){
+  const term=$('q').value.trim().toLowerCase();
+  return products.filter(x=>x.cat===cat&&(size==='All'||x.size.split('/').includes(size))&&(x.model+' '+x.cat+' '+x.size+' '+JSON.stringify(x.v)).toLowerCase().includes(term));
+}
+function render(){
+  const items=shown();
+  if(items.length===1)cur=items[0];
+  $('summary').textContent=`${items.length} shown · ${products.filter(x=>x.cat===cat).length} ${cat.toLowerCase()} products total`;
+  $('list').innerHTML=items.map(x=>`<article class="card"><h3>${x.model}</h3><div class="muted">${x.cat}${x.size?' · '+x.size+' inch':''}</div>${Object.entries(x.v).slice(0,4).map(([k,v])=>`<div><small>${k}</small>: ${v}</div>`).join('')}<div class="actions"><button data-detail="${x.model}|${x.size}">View details</button><button class="${sel.some(s=>s.model===x.model&&s.size===x.size)?'added':''}" data-add="${x.model}|${x.size}">${sel.some(s=>s.model===x.model&&s.size===x.size)?'Added':'Compare'}</button></div></article>`).join('')||'<div class="panel muted">No matching products. Try another model, size or specification.</div>';
+  $('list').querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>{const [m,s]=b.dataset.detail.split('|');cur=products.find(x=>x.model===m&&x.size===s);detail();document.querySelector('.detail').scrollIntoView({behavior:'smooth'})});
+  $('list').querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{const [m,s]=b.dataset.add.split('|');toggle(m,s)});
+  if(cur&&cur.cat===cat)detail();
+}
+function detail(){
+  $('detail').innerHTML=`<h3>${cur.model}</h3><p class="muted">${cur.cat}${cur.size?' · '+cur.size+' inch':''}</p><div class="specs">${Object.entries(cur.v).map(([k,v])=>`<div class="spec"><span>${k}</span><strong>${v}</strong></div>`).join('')}</div>`;
+}
+function toggle(model,productSize){
+  const index=sel.findIndex(x=>x.model===model&&x.size===productSize);
+  if(index>=0)sel.splice(index,1);else{sel.push(products.find(x=>x.model===model&&x.size===productSize));if(sel.length>3)sel.shift()}
+  $('count').textContent=sel.length;render();compare();
+}
+function compare(){
+  $('compareTools').innerHTML=sel.length?sel.map((x,i)=>`<span class="compare-chip">${x.model}${x.size?' · '+x.size+'″':''}<button data-remove="${i}" aria-label="Remove ${x.model}">×</button></span>`).join(''):'<span class="muted">No products selected. Add products from any category.</span>';
+  $('compareTools').querySelectorAll('[data-remove]').forEach(button=>button.onclick=()=>{sel.splice(Number(button.dataset.remove),1);$('count').textContent=sel.length;render();compare()});
+  if(!sel.length){$('compare').innerHTML='';return}
+  const keys=[...new Set(sel.flatMap(x=>Object.keys(x.v)))];
+  let html='<div class="compare-cell compare-head compare-label">Item</div>';
+  for(let i=0;i<3;i++){
+    const item=sel[i];
+    html+=`<div class="compare-cell compare-head">${item?`${item.model}<small>${item.cat}${item.size?' · '+item.size+' inch':''}</small>`:''}</div>`;
+  }
+  keys.forEach(key=>{
+    html+=`<div class="compare-cell compare-label">${key}</div>`;
+    for(let i=0;i<3;i++)html+=`<div class="compare-cell">${sel[i]?(sel[i].v[key]||'—'):''}</div>`;
+  });
+  $('compare').innerHTML=html;
+}
+document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>openCategory(b.dataset.cat));
+$('q').oninput=render;
+$('compareTab').onclick=()=>{$('searchView').hidden=true;$('compareView').hidden=false;document.querySelectorAll('.nav').forEach(b=>b.classList.remove('active'));$('compareTab').classList.add('active');compare();window.scrollTo({top:0,behavior:'smooth'})};
+filters();render();compare();
+</script>
+</body>
+</html>
+
+
+
